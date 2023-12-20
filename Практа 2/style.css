@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "Lobster-Regular";
+    src:
+         local("Lobster-Regular"), 
+         url("Lobster-Regular.ttf") format("ttf");
+}
+
+header, footer {
+    background-color: bisque;
+    padding: 10px;
+    border-radius: 10px;
+    border: aquamarine;
+    border-style: ridge;
+    box-sizing: content-box;
+}
+
+main {
+    padding: 10px;
+}
+
+body {
+    background-color: beige;
+}
+
+section {
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium';
+}
+
+aside {
+    width: 50%;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px black;
+    font-style: italic;
+    color: cadetblue;
+}
+
+address {
+    font-size: larger;
+}
+
+.format, .lists, .pictures, .urls {
+    background-color:wheat;
+    padding: 10px;
+    border-radius: 10px;
+    border: chocolate;
+    border-style: ridge;
+    box-sizing: content-box;
+    margin: 10px;
+}
+
+h2{
+    font-family: "Lobster-Regular";
+    font-weight: lighter;
+    font-style: normal;
+}
+
+a:active {
+    color: blue;
+}
+
+a:visited {
+    color:crimson;
+}
+
+:link:hover {
+    outline: dotted;
+}

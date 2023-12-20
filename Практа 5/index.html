@@ -1,0 +1,291 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="images/favicon.ico" sizes="any">
+        <title> Пятая практа </title>
+        <link href="style.css" rel="stylesheet">
+
+        <script>
+            function onClick(){
+                var audio = new Audio("audio/hurt.mp3");
+                audio.play();
+            }
+
+            function menuOnClick() {
+                document.getElementById("menu-bar").classList.toggle("change");
+                document.getElementById("nav").classList.toggle("change");
+                document.getElementById("menu-bg").classList.toggle("change-bg");
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <header class="sticky">
+            <h1>
+                <a id="header">
+                <img src="images/logo.jpg" alt="Доброе утро!" width="125" height="125" align="middle"/> Всё, что я пока умею в HTML </a>
+                <aside>
+                    <p>Доброго утречка и приятного дня!</em>
+                    <pre>Это только начало...</pre>
+                </aside>
+            </h1>
+
+            <div id="menu">
+                <div id="menu-bar" onclick="menuOnClick()">
+                  <div id="bar1" class="bar"></div>
+                  <div id="bar2" class="bar"></div>
+                  <div id="bar3" class="bar"></div>
+                </div>
+
+                <nav class="nav" id="nav">                
+                    <ul>
+                        <li><a href="#format">К разделу с форматированием текста</a></li>
+                        <li><a href="#lists">К разделу со списками</a></li>
+                        <li><a href="#pictures">К разделу с картинками</a></li>
+                        <li><a href="#forms">К разделу с формой</a></li>
+                        <li><a href="#map">К разделу с картой</a></li>
+                        <li><a href="#video">К разделу с видео</a></li>
+                        <li><a href="#flex">К разделу с галереей</a></li>
+                        <li><a href="#urls">К разделу со ссылками</a></li>
+                        <li><a href="#contact">К разделу с контактами</a></li>
+                    </ul>
+                </nav>
+            </div>
+              
+            <div class="menu-bg" id="menu-bg"></div>
+        </header>
+
+        <main>
+            <article class="format">
+                <section>
+                    <h2><a id="format"></a> Посмотрим на форматирование текста </h2>
+                </section>
+
+                <p>Это тег "p".</p>
+                <br>Это тег "br".</br>
+                <img id="porsche" src="images/porsche.webp" alt="Порш" width="200" height="125">
+                <pre>Это тег "pre".</pre>
+                <b>Это тег "b".</b>
+                <strong>Это тег "strong".</strong>            
+                <i>Это тег "i".</i>
+                <em>Это тег "em".</em>
+                <u>Это тег "u".</u>
+                <sub>Это тег "sub".</sub>
+                <cite>Это тег "cite".</cite>
+                <blockquote>Это тег "blockquote".</blockquote>
+                <abbr>Это тег "abbr".</abbr>
+            </article>
+
+            <article class="lists">
+                <section>
+                    <h2><a id="lists"></a> Важные списки </h2>         
+                </section>
+
+                <ol type="I" start="4">
+                    <li>Яблоко
+                        <ul>
+                            <li>Зелёное</li>
+                            <li>Жёлтое</li>
+                            <li>Красное</li>
+                        </ul>
+                    </li>
+                    <li>Груша</li>
+                    <li>Арбуз</li>
+                    <li>Дыня</li>
+                </ol>
+
+                <dl>
+                    <dt>Первый термин</dt>
+                    <dd>Описание первого термина</dd>
+
+                    <dt>Второй термин</dt>
+                    <dd>Описание второго термина</dd>
+
+                    <dt>Третий термин</dt>
+                    <dd>Описание третьего термина</dd>
+                    <dd>Альтернативное описание третьего термина</dd>
+                    
+                    <dt>Четвёртый термин</dt>
+                    <dd>Описание чевёртого термина</dd>
+                    <dd>Альтернативное описание чевёртого термина</dd>
+
+                    <dt>Пятый термин</dt>
+                    <dd>Описание пятого термина</dd>
+                </dl>
+            </article>
+
+            <article class="pictures">
+                <section>
+                    <h2><a id="pictures"></a> Картиночки </h2>
+                </section>
+
+                <div class="box_pictures">
+                    <img id="krosh" src="images/krosh.webp" alt="Крош">
+                    <img id="ezhik" src="images/ezhik.webp" alt="Ёжик">
+                    <img id="nyusha" src="images/nyusha.webp" alt="Нюша">
+                    <img id="barash" src="images/barash.webp" alt="Бараш">
+                    <img id="kopatich" src="images/kopatich.webp" alt="Копатыч">
+                    <img id="karich" src="images/karich.webp" alt="Карыч">
+                    <img id="losyash" src="images/losyash.webp" alt="Лосяш">
+                    <img id="sovunia" src="images/sovunia.webp" alt="Совунья">
+                    <img id="pin" src="images/pin.webp" alt="Пин">
+                    <img id="bibi" src="images/bibi.webp" alt="Биби">           
+                </div>
+
+            </article>
+
+            <article class="forms">
+                <section>
+                    <h2><a id="forms"></a> Форма </h2>
+                </section>
+
+                <form action="" method="post" autocomplete="on" name="registration_data" class="registration">
+                    <p>
+                        <label for="fullname">Введите ФИО:</label>
+                        <input type="text" name="fullname" id="fullname" size="40px" required placeholder="фамилия имя отчество">
+                    </p>
+
+                    <p>
+                        <label for="phone">Введите номер телефона:</label>
+                        <input type="tel" name="phone" id="phone" required placeholder="номер телефона">
+                    </p>
+
+                    <p>
+                        <label for="email">Введите электронную почту:</label>
+                        <input type="email" name="email" id="email" required placeholder="электронная почта">
+                    </p>
+
+                    <p>
+                        <label for="datetime">Укажите дату и время рождения:</label>
+                        <input type="datetime-local" name="datetime" id="datetime" required>
+                    </p>
+
+                    <p title="Минимум 8 символов, хотя бы одна цифра, заглавная и строчная латинская буква">
+                        <label for="password">Придумайте пароль:</label>
+                        <input type="password" name="password" id="password" required pattern="(?=.+[0-9])(?=.+[a-z])(?=.+[A-Z])[0-9a-zA-Z_]{8,}" placeholder="пароль">
+                    </p>
+
+                    <p>
+                        <label for="file">Загрузите фото профиля:</label>
+                        <input type="file" name="file" id="file" required>
+                    </p>
+
+                    <p>
+                        <fieldset class="sex">
+                            <legend>Укажите свой гендер, к которому вы себя относите:</legend>
+                            <label for="sex_male"><input type="checkbox" name="sex_male" id="sex_male">Мужчина</label>    
+                            <label for="sex_female"><input type="checkbox" name="sex_female" id="sex_female">Женщина</label>   
+                        </fieldset>               
+                    </p>
+
+                    <p>
+                        <label for="city">Выберите город:</label><br>
+                        <select required size="1" name="city" id="city">
+                            <option value="">--Выберите город--</option>  
+                            <option value="moscow">Москва</option>
+                            <option value="piter">Санкт-Петербург</option>
+                            <option value="krasnodar">Краснодар</option>
+                            <option value="kazan">Казань</option>
+                            <option value="mahachkala">Махачкала</option>
+                        </select>               
+                    </p>
+
+                    <p>
+                        <label for="privacy_policy"><input type="radio" name="privacy_policy" id="privacy_policy" required>Тыкните если согласны с нашими требованиями</label>      
+                    </p>
+
+                    <p>
+                        <label for="some_radio"><input type="radio" name="some_radio" id="some_radio" required checked>А это я тыкну за вас :)</label>      
+                    </p>
+
+                    <p>
+                        <label for="text_area">Потренируйтесь в печатании:</label><br>
+                        <textarea id="text_area" name="text_area" rows="7" cols="35" minlength="10" maxlength="200" placeholder="напиши что угодно" required></textarea>
+                    </p>
+
+                    <p>
+                        <input type="submit" name="submit" id="submit" required>
+                    </p>
+                </form>
+
+                <button name="some_button" type="button" onclick="onClick()" id="some_button">Потыкай, чтобы расслабиться</button>
+            </article>
+
+            <article class="map">
+                <section>
+                    <h2><a id="map"></a> Карта </h2>
+                </section>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36011.868708593116!2d37.4508086!3d55.6586998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54dc1d23b51c3%3A0x74763ed59c81ccb6!2z0KDQotCjINCc0JjQoNCt0JA!5e0!3m2!1sru!2sru!4v1695841585471!5m2!1sru!2sru" width="672" height="540" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </article>
+
+            <article class="video">
+                <section>
+                    <h2><a id="video"></a> Видео </h2>
+                </section>
+
+                <iframe width="672" height="378" src="https://www.youtube.com/embed/OXzMdhtzhbc?si=inLRzuB74i34OYRR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </article>
+
+            <article class="flex">
+                <section>
+                    <h2><a id="flex"></a> Галерея Бараша </h2>
+                </section>
+                
+                <section class="flex_1">
+                    <img class="element_of_flex" src="images/barash.webp" width="400px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="250px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="400px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="100px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="50px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="150px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="500px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="200px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="200px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="200px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="600px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="100px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="100px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="150px" height="100px" alt="">
+                    <img class="element_of_flex" src="images/barash.webp" width="350px" height="100px" alt="">
+                </section>
+            </article>
+
+            <article class="urls">
+                <section>
+                    <h2><a id="urls"></a> Другие ресурсы </h2>
+                </section>
+
+                <p>Вот тут <a href="https://www.youtube.com/watch?v=hvL1339luv0" rel="external">ссылка</a> на полезный ресурс.</p>    
+            </article>
+        </main>        
+
+        <footer>
+            <article class="contact">
+                <section>
+                    <h2><a id="contact"></a> Связаться с нами </h2>
+                </section>
+
+                <p><a href="tel:88005553535">Позвонить нам.</a></p>
+                <p><a href="mailto:memandprikol@mail.ru">Написать письмо нам.</a></p> 
+
+                <address>
+                    В случае, если вам необходима личная встреча с владельцем/создателем данного сайта, обращайтесь по адресу: <br />
+                    Россия, г. Москва, проспект Вернадского, 86, стр.1</br>
+                </address>
+            </article>
+        </footer>
+
+        <article class="phone">
+            <a href="tel:88005553535"><img href="tel:88005553535" src="images/phone.png" alt="Позвонить" width="75" height="75"></a>
+        </article>
+
+    </body>
+
+</html>

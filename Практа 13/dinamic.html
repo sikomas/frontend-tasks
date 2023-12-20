@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamic</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            color: white;
+        }
+
+        #content-1 {
+            background-color: red;
+        }
+
+        #content-2 {
+            background-color: green;
+        }
+
+        #content-3 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="content-1">Section 1</section>
+    <section id="content-2">Section 2</section>
+    <section id="content-3">Section 3</section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            window.addEventListener('scroll', function () {
+                updateContentOnScroll();
+            });
+        });
+
+        function updateContentOnScroll() {
+
+            var scrollPosition = window.scrollY;
+
+            var section1 = document.getElementById('content-1');
+            var section2 = document.getElementById('content-2');
+            var section3 = document.getElementById('content-3');
+
+            var offset = 50;
+
+            if (isElementVisible(section1, offset)) {
+                section1.textContent = "Content 1";
+            } else {
+                section1.textContent = "Another content 1";
+            }
+
+            if (isElementVisible(section2, offset)) {
+                section2.textContent = "Content 2";
+            } else {
+                section2.textContent = "Another content 2";
+            }
+
+            if (isElementVisible(section3, offset)) {
+                section3.textContent = "Content 3";
+            } else {
+                section3.textContent = "Another content 3";
+            }
+        }
+
+        function isElementVisible(element, offset) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 - offset &&
+                rect.bottom <= window.innerHeight + offset
+            );
+        }
+    </script>
+</body>
+
+</html>

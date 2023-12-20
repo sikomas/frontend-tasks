@@ -1,0 +1,183 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="images/favicon.ico" sizes="any">
+        <title> Девятая практа </title>
+        <link href="style.css" rel="stylesheet">
+
+        <script src="script.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+        <script>
+            var login = prompt("Введите логин:");
+
+            if (login === "Админ") {
+                var password = prompt("Введите пароль:");
+
+                if (password === "Я главный") {
+                    alert("Здравствуйте!");
+                } else if (password === null) {
+                    alert("Отменено");
+                } else {
+                    alert("Неверный пароль");
+                }
+            } else if (login === null) {
+                alert("Отменено");
+            } else {
+                alert("Я вас не знаю");
+            }
+        </script>
+    </head>
+
+    <body>
+        <header>
+            Пришло время подумать об адаптивности
+        </header>
+
+        <nav>
+            <button onclick="showContent('content1')" class="contentButton">1</button>
+            <button onclick="showContent('content2')" class="contentButton">2</button>
+            <button onclick="showContent('content3')" class="contentButton">3</button>
+            <button onclick="showContent('content4')" class="contentButton">4</button>
+        </nav>
+
+        <section class="sidebar">
+            Боковая панель
+        </section>
+
+        <main>
+            <div id="content1" class="content">
+                <div class="gallery">
+                    <div class="cell computer">
+                        <div><img src="images/comp1.png" width="75px" height="75px"></div>
+                        <p>Кампуктер</p>
+                    </div>
+                    <div class="cell www">
+                        <div><img src="images/www.png" width="75px" height="75px"></div>
+                        <p>Ынтернет</p>
+                    </div>
+                    <div class="cell engine">
+                        <div><img src="images/comp2.png" width="75px" height="75px"></div>
+                        <p>Ещё кампуктер</p>
+                    </div>
+                    <div class="cell code">
+                        <div><img src="images/code.png" width="75px" height="75px"></div>
+                        <p>Кодик</p>
+                    </div>
+                    <div class="cell ai">
+                        <div><img src="images/ai.png" width="75px" height="75px"></div>
+                        <p>Умник</p>
+                    </div>
+                    <div class="cell bin">
+                        <div><img src="images/bin.png" width="75px" height="75px"></div>
+                        <p>Нолики и единички</p>
+                    </div>
+                    <div class="cell mobile">
+                        <div><img src="images/mobile.png" width="75px" height="75px"></div>
+                        <p>Мобила</p>
+                    </div>
+                </div>
+            </div>
+            <div id="content2" class="content">
+                <form id="loginForm">
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" required>
+                    <br>
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <br>
+                    <button id="loginButton">Войти</button>
+                </form>
+
+                <script>
+                    document.getElementById("loginForm").addEventListener("submit", function(event) {
+                        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById("password").value;
+
+                        if (username === "Дмитрий" && password === "11062004") {
+                            alert("Вы успешно вошли в панель управления.");
+                        } else {
+                            var registrationChoice = prompt("Желаете пройти регистрацию на сайте? (Да/Нет)");
+
+                            if (registrationChoice && registrationChoice.toLowerCase() === "да") {
+                                alert("Круто!");
+                            } else {
+                                alert("Попробуйте ещё раз.");
+                            }
+                        }
+                    });
+                </script>
+            </div>
+            <div id="content3" class="content">
+                <button id="likeButton">Нравится</button>
+
+                <script>
+                    var likeButton = document.getElementById("likeButton");
+                    var isLiked = false;
+
+                    likeButton.addEventListener("click", function() {
+                        if (isLiked) {
+                            likeButton.style.backgroundColor = ""; // Возвращаем исходный цвет (пустая строка)
+                        } else {
+                            likeButton.style.backgroundColor = "pink"; // Меняем цвет на зеленый (или любой другой цвет)
+                        }
+
+                        isLiked = !isLiked; // Инвертируем флаг "нравится"
+                    });
+                </script>
+            </div>
+            <div id="content4" class="content">
+                <div id="canvas"></div>
+                <button id="paintButton">Рисовать</button>
+
+                <script>
+                    var paintButton = document.getElementById("paintButton");
+                    var canvas = document.getElementById("canvas");
+                    var isDrawing = false;
+
+                    paintButton.addEventListener("click", function() {
+                        if (isDrawing) {
+                            isDrawing = false;
+                            paintButton.innerText = "Рисовать";
+                            canvas.style.cursor = "auto";
+                        } else {
+                            isDrawing = true;
+                            paintButton.innerText = "Не рисовать";
+                            canvas.style.cursor = "crosshair";
+                        }
+                    });
+
+                    canvas.addEventListener("mousemove", function(event) {
+                        if (isDrawing) {
+                            var dot = document.createElement("div");
+                            dot.className = "dot";
+                            dot.style.left = (event.clientX - 2.5) + "px";
+                            dot.style.top = (event.clientY - 2.5) + "px";
+                            canvas.appendChild(dot);
+                        }
+                    });
+                </script>
+            </div>
+        </main>
+
+        <section class="ads">
+            Тут могла быть ваша реклама
+        </section>
+
+        <footer>
+                <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </footer>
+    </body>
+
+</html>

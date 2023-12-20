@@ -1,0 +1,241 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <title> Одиннадцатая практа </title>
+
+    <link href="style.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"></script>
+
+    <style>
+        #cart {
+            border: 2px solid #ddd;
+            padding: 5px;
+            border-radius: 5px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .cart-icon {
+            color: #3498db;
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #total-cost {
+            margin-top: 10px;
+        }
+
+        #price-filter {
+            margin-top: 10px;
+        }
+
+        #sort-buttons {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Давай поиграемся с JavaScript
+    </header>
+
+    <nav>
+        <button onclick="showContent('content1')" class="contentButton">1</button>
+        <button onclick="showContent('content2')" class="contentButton">2</button>
+    </nav>
+
+    <section class="sidebar">
+        Боковая панель
+    </section>
+
+    <main>
+        <div id="content1" class="content">
+            <div class="gallery">
+                <div class="cell computer">
+                    <div><img src="images/comp1.png" width="75px" height="75px"></div>
+                    <p>Кампуктер</p>
+                </div>
+                <div class="cell www">
+                    <div><img src="images/www.png" width="75px" height="75px"></div>
+                    <p>Ынтернет</p>
+                </div>
+                <div class="cell engine">
+                    <div><img src="images/comp2.png" width="75px" height="75px"></div>
+                    <p>Ещё кампуктер</p>
+                </div>
+                <div class="cell code">
+                    <div><img src="images/code.png" width="75px" height="75px"></div>
+                    <p>Кодик</p>
+                </div>
+                <div class="cell ai">
+                    <div><img src="images/ai.png" width="75px" height="75px"></div>
+                    <p>Умник</p>
+                </div>
+                <div class="cell bin">
+                    <div><img src="images/bin.png" width="75px" height="75px"></div>
+                    <p>Нолики и единички</p>
+                </div>
+                <div class="cell mobile">
+                    <div><img src="images/mobile.png" width="75px" height="75px"></div>
+                    <p>Мобила</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="content2" class="content">
+            <h1>Корзина</h1>
+
+            <div id="cart">
+                <!-- Display cart items here -->
+            </div>
+
+            <div id="total-cost">Сумма: $0</div>
+
+            <button onclick="changeItem()">Заменить случайный товар</button>
+            <button onclick="removeCartItem()">Удалить случайный товар</button>
+            <button onclick="clearCart()">Очистить корзину</button>
+
+            <div id="price-filter">
+                <label for="min-price">Минимум:</label>
+                <input type="number" id="min-price" value="0">
+                <label for="max-price">Максимум:</label>
+                <input type="number" id="max-price" value="100">
+                <button onclick="filterByPrice()">Фильтр по цене</button>
+            </div>
+
+            <div id="sort-buttons">
+                <button onclick="sortAscending()">Сортировка по возрастанию</button>
+                <button onclick="sortDescending()">Сортировка по убыванию</button>
+            </div>
+
+            <script>
+                // 1. Создание массива
+                let cartItems = [
+                    { name: "Помидор", quantity: 1, cost: 10 },
+                    { name: "Цапля", quantity: 1, cost: 20 },
+                    { name: "Ящер", quantity: 1, cost: 25 },
+                    { name: "Рус", quantity: 1, cost: 30 }
+                ];
+
+                // 1.1. Функция изменения элемента
+                function changeItem() {
+                    const randomIndex = Math.floor(Math.random() * cartItems.length);
+                    cartItems[randomIndex].name = "Кракозябра";
+                    cartItems[randomIndex].quantity = 0;
+                    cartItems[randomIndex].cost = 1000000;
+                    displayCart();
+                }
+
+                // 1.2. Функция очистки массива
+                function clearCart() {
+                    cartItems = [];
+                    displayCart();
+                }
+
+                // 1.3. Функция удаления элемента
+                function removeCartItem() {
+                    const randomIndex = Math.floor(Math.random() * cartItems.length);
+                    cartItems.splice(randomIndex, 1);
+                    displayCart();
+                }
+
+                // Функция увеличения количества товара
+                function increaseQuantity(index) {
+                    cartItems[index].quantity++;
+                    updateTotalCost();
+                    displayCart();
+                }
+
+                // Функция обновления общей стоимости
+                function updateTotalCost() {
+                    const totalCost = cartItems.reduce((acc, item) => acc + item.quantity * item.cost, 0);
+                    document.getElementById("total-cost").textContent = `Сумма: $${totalCost}`;
+                }
+
+                // Функция фильтра 
+                function filterByPrice() {
+                    const minPrice = parseFloat(document.getElementById("min-price").value);
+                    const maxPrice = parseFloat(document.getElementById("max-price").value);
+
+                    if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+                        const filteredArray = cartItems.filter(item => item.cost * item.quantity >= minPrice && item.cost * item.quantity <= maxPrice);
+                        cartItems = filteredArray;
+                        displayCart(cartItems);
+                    }
+                }
+
+                // Отобразить содержимое корзины
+                function displayCart() {
+                    const cartDiv = document.getElementById("cart");
+                    cartDiv.innerHTML = cartItems.map((item, index) => {
+                        return `
+                    <div class="cart-item">
+                      <p>${item.name} (Количество: ${item.quantity}, Цена: $${item.cost * item.quantity}) --> </p>
+                      <button onclick="increaseQuantity(${index})">+</button>
+                    </div>
+                  `;
+                    }).join('');
+
+                    updateTotalCost();
+                }
+
+                // Функция сортировки по возрастанию
+                function sortAscending() {
+                    cartItems.sort((a, b) => a.cost * a.quantity - b.cost * b.quantity);
+                    displayCart();
+                }
+
+                // Функция сортировки по убыванию
+                function sortDescending() {
+                    cartItems.sort((a, b) => b.cost * b.quantity - a.cost * a.quantity);
+                    displayCart();
+                }
+
+                // Инициализация отображения при загрузке страницы
+                displayCart();
+            </script>
+        </div>
+    </main>
+
+    <section class="ads">
+        Тут могла быть ваша реклама
+    </section>
+
+    <footer>
+        <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i
+                class="fab fa-facebook-f"></i></a>
+        <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i
+                class="fab fa-twitter"></i></a>
+        <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i
+                class="fab fa-linkedin"></i></a>
+        <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+        <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i
+                class="fab fa-instagram"></i></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="images/favicon.ico" sizes="any">
+        <title> Восьмая практа </title>
+        <link href="style.css" rel="stylesheet">
+
+        <script>
+            function showContent(contentId) {
+                const contentElements = document.querySelectorAll('.content');
+                for (const element of contentElements) {
+                    element.style.display = 'none';
+                }
+                document.getElementById(contentId).style.display = 'flex';
+            }
+            
+        </script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header>
+            Пришло время подумать об адаптивности
+        </header>
+
+        <nav>
+            <button onclick="showContent('content1')" class="contentButton">1</button>
+            <button onclick="showContent('content2')" class="contentButton">2</button>
+        </nav>
+
+        <section class="sidebar">
+            Боковая панель
+        </section>
+
+        <main>
+            <div id="content1" class="content">
+                <div class="gallery">
+                    <div class="cell computer">
+                        <div><img src="images/comp1.png" width="75px" height="75px"></div>
+                        <p>Кампуктер</p>
+                    </div>
+                    <div class="cell www">
+                        <div><img src="images/www.png" width="75px" height="75px"></div>
+                        <p>Ынтернет</p>
+                    </div>
+                    <div class="cell engine">
+                        <div><img src="images/comp2.png" width="75px" height="75px"></div>
+                        <p>Ещё кампуктер</p>
+                    </div>
+                    <div class="cell code">
+                        <div><img src="images/code.png" width="75px" height="75px"></div>
+                        <p>Кодик</p>
+                    </div>
+                    <div class="cell ai">
+                        <div><img src="images/ai.png" width="75px" height="75px"></div>
+                        <p>Умник</p>
+                    </div>
+                    <div class="cell bin">
+                        <div><img src="images/bin.png" width="75px" height="75px"></div>
+                        <p>Нолики и единички</p>
+                    </div>
+                    <div class="cell mobile">
+                        <div><img src="images/mobile.png" width="75px" height="75px"></div>
+                        <p>Мобила</p>
+                    </div>
+                </div>
+            </div>
+            <div id="content2" class="content">
+                <div class="formPanel">
+                    <h3>Форма для связи</h3>
+                    <form class="form" method="post">
+                        <input type="text" id="name" name="name" placeholder="Имечко">
+                        <input type="text" id="surname" name="surname" placeholder="Фамилечка">
+                        <input type="email" id="email" name="email" placeholder="Почточка">
+                        <input type="phone" id="phone" name="phone" placeholder="Телефончик">
+                        <textarea id="message" name="message" rows="4" placeholder="Расскажи о себе любимом"></textarea>
+                        <button type="submit">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <section class="ads">
+            Тут могла быть ваша реклама
+        </section>
+
+        <footer>
+                <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </footer>
+    </body>
+
+</html>

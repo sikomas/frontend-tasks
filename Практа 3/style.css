@@ -1,0 +1,149 @@
+@font-face {
+    font-family: "Lobster-Regular";
+    src:
+         local("Lobster-Regular"), 
+         url("Lobster-Regular.ttf") format("ttf");
+}
+
+header {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    height: 210px;
+
+    background-color: bisque;
+    padding: 10px;
+    border-radius: 10px;
+    border: aquamarine;
+    border-style: ridge;
+    box-sizing: content-box;
+}
+
+header > h1{
+    position: absolute;
+    left: 50px;
+}
+
+header > nav{
+    display: inline;
+    position: absolute;
+    top: 90px;
+    left: 175px;
+}
+
+header > nav > ul{
+    list-style: square;
+}
+header > nav > ul > li{
+    text-decoration: underline black;
+    padding: 2px;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+#krosh, #ezhik, #nyusha, #barash, #kopatich, #karich, #losyash, #sovunia, #pin, #bibi{
+    height: 250px;
+    width: 250px;
+    margin: 10px;
+    background-color: rgb(228, 206, 166);
+    border-radius: 100%;
+}
+
+.box_pictures {
+    display: table;
+}
+
+#porsche {
+    float: left;
+    margin:10px;
+}
+
+header > h1 > aside {
+    position: absolute;
+    top: 5px;
+    right: -750px;
+
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px black;
+    font-style: italic;
+    color: cadetblue;
+}
+
+footer {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: bisque;
+    padding: 10px;
+    border-radius: 10px;
+    border: aquamarine;
+    border-style: ridge;
+    box-sizing: content-box;
+}
+
+main {
+    padding: 10px;
+}
+
+body {
+    background-color: beige;
+}
+
+section {
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium';
+}
+
+address {
+    font-size: larger;
+}
+
+.format, .lists, .pictures, .urls {
+    background-color:wheat;
+    padding: 10px;
+    border-radius: 10px;
+    border: chocolate;
+    border-style: ridge;
+    box-sizing: content-box;
+    margin: 10px;
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    font-family: "Lobster-Regular";
+    font-weight: lighter;
+    font-style: normal;
+}
+
+.phone {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    border: 3px rgb(15, 98, 10);
+    border-radius: 100%;
+    border-style:inherit;
+    height: 75px;
+    width: 75px;
+    background-color: rgb(226, 224, 224);
+}
+
+a:active {
+    color: blue;
+}
+
+a:visited {
+    color:crimson;
+}
+
+:link:hover:not(.phone > a) {
+    outline: dotted;
+}

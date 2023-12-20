@@ -1,0 +1,206 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <title> Тринадцатая практа </title>
+
+    <link href="style.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"></script>
+
+    <style>
+        #notifications-container {
+            max-width: 300px;
+        }
+
+        .notification {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+
+        .parallax-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow-y: scroll;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/back.jpeg') center/cover no-repeat;
+            transform: translateZ(0);
+        }
+
+        .text-content {
+            padding: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Давай поиграемся с JavaScript
+    </header>
+
+    <nav>
+        <button onclick="showContent('content1')" class="contentButton">1</button>
+        <button onclick="showContent('content2')" class="contentButton">2</button>
+        <button onclick="showContent('content3')" class="contentButton">3</button>
+    </nav>
+
+    <section class="sidebar">
+        Боковая панель
+    </section>
+
+    <main>
+        <div id="content1" class="content">
+            <div class="gallery">
+                <div class="cell computer">
+                    <div><img src="images/comp1.png" width="75px" height="75px"></div>
+                    <p>Кампуктер</p>
+                </div>
+                <div class="cell www">
+                    <div><img src="images/www.png" width="75px" height="75px"></div>
+                    <p>Ынтернет</p>
+                </div>
+                <div class="cell engine">
+                    <div><img src="images/comp2.png" width="75px" height="75px"></div>
+                    <p>Ещё кампуктер</p>
+                </div>
+                <div class="cell code">
+                    <div><img src="images/code.png" width="75px" height="75px"></div>
+                    <p>Кодик</p>
+                </div>
+                <div class="cell ai">
+                    <div><img src="images/ai.png" width="75px" height="75px"></div>
+                    <p>Умник</p>
+                </div>
+                <div class="cell bin">
+                    <div><img src="images/bin.png" width="75px" height="75px"></div>
+                    <p>Нолики и единички</p>
+                </div>
+                <div class="cell mobile">
+                    <div><img src="images/mobile.png" width="75px" height="75px"></div>
+                    <p>Мобила</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="content2" class="content">
+            <div id="centered-container">
+                <img id="centered-image" src="images/bin100px.png" alt="Centered Image">
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var centeredContainer = document.getElementById('centered-container');
+                    var centeredImage = document.getElementById('centered-image');
+
+                    function centerImage() {
+                        var containerWidth = window.innerWidth;
+                        var containerHeight = window.innerHeight;
+                        var imageWidth = centeredImage.width;
+                        var imageHeight = centeredImage.height;
+
+                        var leftOffset = (containerWidth - imageWidth) / 2;
+                        var topOffset = (containerHeight - imageHeight) / 2;
+
+                        centeredImage.style.left = leftOffset + 'px';
+                        centeredImage.style.top = topOffset + 'px';
+                    }
+
+                    centerImage();
+
+                    window.addEventListener('resize', centerImage);
+
+                    centeredImage.addEventListener('click', function (event) {
+                        var x = event.clientX;
+                        var y = event.clientY;
+                        console.log('Clicked at coordinates: (' + x + ', ' + y + ')');
+                    });
+                });
+            </script>
+        </div>
+
+        <div id="content3" class="content">
+            <div id="notifications-container"></div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var notificationsContainer = document.getElementById('notifications-container');
+
+                    function createNotification(message) {
+                        var notification = document.createElement('div');
+                        notification.classList.add('notification');
+                        notification.innerHTML = '<span>' + message + '</span>';
+
+                        var closeButton = document.createElement('span');
+                        closeButton.classList.add('close-button');
+                        closeButton.innerHTML = 'x';
+
+                        closeButton.addEventListener('click', function () {
+                            notificationsContainer.removeChild(notification);
+                        });
+
+                        notification.appendChild(closeButton);
+                        notificationsContainer.appendChild(notification);
+                    }
+
+                    createNotification('Купи Skyrim');
+                    createNotification('Слышь, купи');
+                    createNotification('Купи Starfield');
+                    createNotification('Ладно');
+                    createNotification('Не покупай');
+
+
+                    notificationsContainer.addEventListener('click', function (event) {
+                        if (event.target.classList.contains('close-button')) {
+                            var notification = event.target.parentNode;
+                            notificationsContainer.removeChild(notification);
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </main>
+
+    <section class="ads">
+        Тут могла быть ваша реклама
+    </section>
+
+    <footer>
+        <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i
+                class="fab fa-facebook-f"></i></a>
+        <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i
+                class="fab fa-twitter"></i></a>
+        <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i
+                class="fab fa-linkedin"></i></a>
+        <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+        <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i
+                class="fab fa-instagram"></i></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

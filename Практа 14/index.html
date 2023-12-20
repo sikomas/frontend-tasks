@@ -1,0 +1,430 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <title> Четырнадцатая практа </title>
+
+    <link href="style.css" rel="stylesheet">
+
+    <style>
+        * {
+            user-select: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            cursor: pointer;
+            user-select: none;
+            padding: 8px;
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+
+        li.selected {
+            background-color: #a6a6a6;
+            color: #fff;
+        }
+
+        #gallery {
+            display: flex;
+            justify-content: space-around;
+            max-width: 100px;
+            margin: 20px auto;
+        }
+
+        #mainImage {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .thumbnail {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        #sliderContainer {
+            width: 300px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        #slider {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #sliderHandle {
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #cart {
+            width: 200px;
+            height: 300px;
+            background-color: #3e3b3b;
+            border: 2px solid #ccc;
+            margin-right: 20px;
+            float: left;
+            padding: 10px;
+        }
+
+        #cart p {
+            margin: 0;
+        }
+
+        #productList {
+            float: left;
+        }
+
+        .product {
+            cursor: grab;
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        #animatedElement {
+            border-radius: 100%;
+            padding: 50px;
+        }
+
+        #animatedElement img{
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        Давай поиграемся с JavaScript
+    </header>
+
+    <nav>
+        <button onclick="showContent('content1')" class="contentButton">1</button>
+        <button onclick="showContent('content2')" class="contentButton">2</button>
+        <button onclick="showContent('content3')" class="contentButton">3</button>
+        <button onclick="showContent('content4')" class="contentButton">4</button>
+        <button onclick="showContent('content5')" class="contentButton">5</button>
+        <button onclick="showContent('content6')" class="contentButton">6</button>
+        <button onclick="showContent('content7')" class="contentButton">7</button>
+    </nav>
+
+    <section class="sidebar">
+        Боковая панель
+    </section>
+
+    <main>
+        <div id="content1" class="content">
+            <div class="gallery">
+                <div class="cell computer">
+                    <div><img src="images/comp1.png" width="75px" height="75px"></div>
+                    <p>Кампуктер</p>
+                </div>
+                <div class="cell www">
+                    <div><img src="images/www.png" width="75px" height="75px"></div>
+                    <p>Ынтернет</p>
+                </div>
+                <div class="cell engine">
+                    <div><img src="images/comp2.png" width="75px" height="75px"></div>
+                    <p>Ещё кампуктер</p>
+                </div>
+                <div class="cell code">
+                    <div><img src="images/code.png" width="75px" height="75px"></div>
+                    <p>Кодик</p>
+                </div>
+                <div class="cell ai">
+                    <div><img src="images/ai.png" width="75px" height="75px"></div>
+                    <p>Умник</p>
+                </div>
+                <div class="cell bin">
+                    <div><img src="images/bin.png" width="75px" height="75px"></div>
+                    <p>Нолики и единички</p>
+                </div>
+                <div class="cell mobile">
+                    <div><img src="images/mobile.png" width="75px" height="75px"></div>
+                    <p>Мобила</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="content2" class="content">
+            <div id="contents">
+                <p>Здарова, братиш! <a href="https://example.com">Тыкни на меня</a></p>
+            </div>
+
+            <script>
+                document.getElementById('contents').addEventListener('click', function (event) {
+                    var targetElement = event.target;
+
+                    // Проверяем, является ли целевой элемент ссылкой (или находится ли он внутри ссылки)
+                    while (targetElement && targetElement !== this) {
+                        if (targetElement.tagName === 'A') {
+                            // Предлагаем пользователю подтвердить переход по ссылке
+                            var confirmNavigation = confirm('Вы уверены, что хотите покинуть страницу?');
+
+                            // Если пользователь отказывается, прерываем действие по умолчанию (переход по ссылке)
+                            if (!confirmNavigation) {
+                                event.preventDefault();
+                            }
+                            return;
+                        }
+                        targetElement = targetElement.parentNode;
+                    }
+                });
+            </script>
+        </div>
+
+        <div id="content3" class="content">
+            <div id="gallery">
+                <img src="images/ai.png" alt="Image 1" class="thumbnail" onclick="changeImage('images/ai.png')">
+                <img src="images/bin.png" alt="Image 2" class="thumbnail" onclick="changeImage('images/bin.png')">
+                <img src="images/code.png" alt="Image 3" class="thumbnail" onclick="changeImage('images/code.png')">
+                <img src="images/smile.png" alt="Image 3" class="thumbnail" onclick="changeImage('images/smile.png')">
+            </div>
+
+            <img src="images/favicon.ico" alt="Main Image" id="mainImage">
+
+            <script>
+                function changeImage(imageSource) {
+                    // Получаем ссылку на элемент основного изображения
+                    var mainImage = document.getElementById('mainImage');
+
+                    // Изменяем источник основного изображения
+                    mainImage.src = imageSource;
+                }
+            </script>
+        </div>
+
+        <div id="content4" class="content">
+            <ul id="selectableList">
+                <li>Тили</li>
+                <li>Тили</li>
+                <li>Трали</li>
+                <li>Вали</li>
+            </ul>
+
+            <script>
+                document.getElementById('selectableList').addEventListener('click', function (event) {
+                    var targetElement = event.target;
+
+                    // Если удерживается клавиша Ctrl (или Cmd для Mac), переключаем выделение
+                    if (event.ctrlKey || event.metaKey) {
+                        targetElement.classList.toggle('selected');
+                    } else {
+                        // Отменяем выделение для всех элементов и выделяем только текущий
+                        var listItems = this.getElementsByTagName('li');
+                        for (var i = 0; i < listItems.length; i++) {
+                            listItems[i].classList.remove('selected');
+                        }
+                        targetElement.classList.add('selected');
+                    }
+
+                    // Предотвращаем стандартное выделение текста браузером
+                    event.preventDefault();
+                });
+            </script>
+        </div>
+
+        <div id="content5" class="content">
+            <div id="sliderContainer">
+                <div id="slider">
+                    <div id="sliderHandle"></div>
+                </div>
+            </div>
+
+            <script>
+                var slider = document.getElementById('slider');
+                var sliderHandle = document.getElementById('sliderHandle');
+
+                var isDragging = false;
+
+                sliderHandle.addEventListener('mousedown', function (e) {
+                    isDragging = true;
+                    handleMove(e);
+                });
+
+                document.addEventListener('mousemove', function (e) {
+                    if (isDragging) {
+                        handleMove(e);
+                    }
+                });
+
+                document.addEventListener('mouseup', function () {
+                    isDragging = false;
+                });
+
+                function handleMove(e) {
+                    var sliderRect = slider.getBoundingClientRect();
+                    var handleRect = sliderHandle.getBoundingClientRect();
+
+                    var offsetX = e.clientX - sliderRect.left;
+                    var handleX = Math.min(Math.max(offsetX, 0), sliderRect.width - handleRect.width);
+
+                    sliderHandle.style.left = handleX + 'px';
+                }
+            </script>
+        </div>
+
+        <div id="content6" class="content">
+            <div id="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>Корзина</h2>
+                <div id="cartItems"></div>
+                <p id="totalCost">Итого: $0</p>
+            </div>
+
+            <div id="productList">
+                <h2>Товары</h2>
+                <div class="product" data-price="10" draggable="true" ondragstart="drag(event)">Пиво ($10)</div>
+                <div class="product" data-price="20" draggable="true" ondragstart="drag(event)">Яблоки 1кг ($20)</div>
+                <div class="product" data-price="30" draggable="true" ondragstart="drag(event)">Пачка рис ($30)</div>
+                <div class="product" data-price="40" draggable="true" ondragstart="drag(event)">Квартира на Арбате ($40)
+                </div>
+                <div class="product" data-price="50" draggable="true" ondragstart="drag(event)">Арбуз ($50)</div>
+            </div>
+
+            <script>
+                let totalCost = 0;
+                const totalCostDisplay = document.getElementById('totalCost');
+                const cartItemsContainer = document.getElementById('cartItems');
+
+                function allowDrop(event) {
+                    event.preventDefault();
+                }
+
+                function drag(event) {
+                    event.dataTransfer.setData('text', event.target.dataset.price);
+                }
+
+                function drop(event) {
+                    event.preventDefault();
+
+                    // Добавляем товар в корзину
+                    const draggedElement = document.querySelector('.product[draggable="true"]:hover');
+                    if (draggedElement) {
+                        const price = parseInt(event.dataTransfer.getData('text'), 10);
+                        totalCost += price;
+
+                        totalCostDisplay.textContent = `Итого: $${totalCost}`;
+
+                        const itemName = draggedElement.textContent;
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('cart-item');
+                        cartItem.textContent = itemName;
+                        cartItemsContainer.appendChild(cartItem);
+                        draggedElement.parentNode.removeChild(draggedElement);
+
+                        // Добавляем обработчик клика для возврата товара в список
+                        cartItem.addEventListener('click', function () {
+                            const product = document.createElement('div');
+                            product.classList.add('product');
+                            product.dataset.price = price;
+                            product.draggable = true;
+                            product.textContent = itemName;
+                            product.addEventListener('dragstart', drag);
+                            document.getElementById('productList').appendChild(product);
+
+                            // Вычитаем стоимость товара из общей стоимости при возвращении в список
+                            totalCost -= price;
+                            totalCostDisplay.textContent = `Итого: $${totalCost}`;
+
+                            // Удаляем товар из корзины
+                            cartItemsContainer.removeChild(cartItem);
+                        });
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="content7" class="content">
+            <div id="animatedElement"><img src="images/shrek.png"></div>
+
+            <script>
+                const animatedElement = document.getElementById('animatedElement');
+
+                // Анимация 1: Вращение
+                function rotateAnimation() {
+                    let rotation = 0;
+                    const rotateInterval = setInterval(() => {
+                        rotation += 15;
+                        animatedElement.style.transform = `rotate(${rotation}deg)`;
+                    }, 30);
+
+                    return rotateInterval;
+                }
+
+                // Анимация 2: Изменение цвета
+                function colorAnimation() {
+                    let color = 0;
+                    const colorInterval = setInterval(() => {
+                        color += 10;
+                        animatedElement.style.backgroundColor = `hsl(${color}, 75%, 50%)`;
+                    }, 30);
+
+                    return colorInterval;
+                }
+
+                // Запуск анимаций в цикле
+                function startAnimations() {
+                    const rotateInterval = rotateAnimation();
+                    const colorInterval = colorAnimation();
+                }
+
+                // Запуск анимаций при загрузке страницы
+                startAnimations();
+            </script>
+        </div>
+    </main>
+
+    <section class="ads">
+        Тут могла быть ваша реклама
+    </section>
+
+    <footer>
+        <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i
+                class="fab fa-facebook-f"></i></a>
+        <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i
+                class="fab fa-twitter"></i></a>
+        <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i
+                class="fab fa-linkedin"></i></a>
+        <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+        <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i
+                class="fab fa-instagram"></i></a>
+    </footer>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-draggable/3.2.4/vanilla-draggable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

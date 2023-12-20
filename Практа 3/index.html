@@ -1,0 +1,146 @@
+<!DOCTYPE html> <!-- Тип документа для браузера-->
+<html lang="ru"> <!-- Самый главный тег-->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="favicon.ico" sizes="any">
+        <title> Третья практа </title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header class="sticky">
+            <h1>
+                <a id="header">
+                <img src="logo.jpg" alt="Доброе утро!" width="125" height="125" align="middle"/> Всё, что я пока умею в HTML </a>
+                <aside>
+                    <p>Доброго утречка и приятного дня!</em>
+                    <pre>Это только начало...</pre>
+                </aside>
+            </h1>
+            <nav>                
+                <ul>
+                    <li><a href="#format">К разделу с форматированием текста</a>
+                    <li><a href="#lists">К разделу со списками</a>
+                    <li><a href="#pictures">К разделу с картинками</a>
+                    <li><a href="#urls">К разделу со ссылками</a>
+                    <li><a href="#contact">К разделу с контактами</a>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="format">
+                <section>
+                    <h2><a id="format"></a> Посмотрим на форматирование текста </h2>
+                </section>
+
+                <p>Это тег "p".</p>
+                <br>Это тег "br".</br>
+                <img id="porsche" src="porsche.webp" alt="Порш" width="200" height="125">
+                <pre>Это тег "pre".</pre>
+                <b>Это тег "b".</b>
+                <strong>Это тег "strong".</strong>            
+                <i>Это тег "i".</i>
+                <em>Это тег "em".</em>
+                <u>Это тег "u".</u>
+                <sub>Это тег "sub".</sub>
+                <cite>Это тег "cite".</cite>
+                <blockquote>Это тег "blockquote".</blockquote>
+                <abbr>Это тег "abbr".</abbr>
+            </article>
+
+            <article class="lists">
+                <section>
+                    <h2><a id="lists"></a> Важные списки </h2>         
+                </section>
+
+                <ol type="I" start="4">
+                    <li>Яблоко
+                        <ul>
+                            <li>Зелёное</li>
+                            <li>Жёлтое</li>
+                            <li>Красное</li>
+                        </ul>
+                    </li>
+                    <li>Груша</li>
+                    <li>Арбуз</li>
+                    <li>Дыня</li>
+                </ol>
+
+                <dl>
+                    <dt>Первый термин</dt>
+                    <dd>Описание первого термина</dd>
+
+                    <dt>Второй термин</dt>
+                    <dd>Описание второго термина</dd>
+
+                    <dt>Третий термин</dt>
+                    <dd>Описание третьего термина</dd>
+                    <dd>Альтернативное описание третьего термина</dd>
+                    
+                    <dt>Четвёртый термин</dt>
+                    <dd>Описание чевёртого термина</dd>
+                    <dd>Альтернативное описание чевёртого термина</dd>
+
+                    <dt>Пятый термин</dt>
+                    <dd>Описание пятого термина</dd>
+                </dl>
+            </article>
+
+            <article class="pictures">
+                <section>
+                    <h2><a id="pictures"></a> Картиночки </h2>
+                </section>
+
+                <div class="box_pictures">
+                    <img id="krosh" src="krosh.webp" alt="Крош">
+                    <img id="ezhik" src="ezhik.webp" alt="Ёжик">
+                    <img id="nyusha" src="nyusha.webp" alt="Нюша">
+                    <img id="barash" src="barash.webp" alt="Бараш">
+                    <img id="kopatich" src="kopatich.webp" alt="Копатыч">
+                    <img id="karich" src="karich.webp" alt="Карыч">
+                    <img id="losyash" src="losyash.webp" alt="Лосяш">
+                    <img id="sovunia" src="sovunia.webp" alt="Совунья">
+                    <img id="pin" src="pin.webp" alt="Пин">
+                    <img id="bibi" src="bibi.webp" alt="Биби">           
+                </div>
+
+            </article>
+
+            <article class="urls">
+                <section>
+                    <h2><a id="urls"></a> Другие ресурсы </h2>
+                </section>
+
+                <p>Вот тут <a href="https://www.youtube.com/watch?v=BL8ZKeGCaIg" rel="external">ссылка</a> на полезный ресурс.</p>    
+            </article>
+        </main>        
+
+        <footer>
+            <article class="contact">
+                <section>
+                    <h2><a id="contact"></a> Связаться с нами </h2>
+                </section>
+
+                <p><a href="tel:88005553535">Позвонить нам.</a></p>
+                <p><a href="mailto:memandprikol@mail.ru">Написать письмо нам.</a></p> 
+
+                <address>
+                    В случае, если вам необходима личная встреча с владельцем/создателем данного сайта, обращайтесь по адресу: <br />
+                    Россия, г. Москва, проспект Вернадского, 86, стр.1</br>
+                </address>
+            </article>
+        </footer>
+
+        <article class="phone">
+            <a href="tel:88005553535"><img href="tel:88005553535" src="phone.png" alt="Позвонить" width="75" height="75"></a>
+        </article>
+
+    </body>
+
+</html>
