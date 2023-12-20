@@ -1,2 +1,2 @@
-# html_practice
+# html-tasks
  My homeworks in the frontend discipline
